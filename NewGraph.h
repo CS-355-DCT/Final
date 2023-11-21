@@ -2,8 +2,9 @@
 #define H_GRAPH
 
 #include <iostream>
-#include <list>
+#include <deque>
 #include "POI.h"
+#include "Road.h"
 
 using namespace std;
 
@@ -11,12 +12,14 @@ using namespace std;
 class Graph
 {
 	private:
-		list<POI> points;
+		deque<POI> points;
 		//the station, starting point for all cases, will always be named "Station"
 		POI Station;
+		int findPOIIndex(string);
+		void findDistanceFromStart(vector<pair<POI*, Road>>&, POI);
 	public:
 		Graph();
-		void addRoad(const string, const string, const string);
+		void addRoad(const string, const string, const string, int);
 		void getShortestPath(const string);		
 };
 
