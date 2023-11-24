@@ -15,7 +15,7 @@ int Graph::findPOIIndex(string poiName)
 		if(points[i].name == poiName)
 			return i;
 	}
-	cout << "POI is not in graph" << endl;
+	//poi is not in graph, return -1
 	return -1;
 }
 
