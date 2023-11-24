@@ -19,6 +19,7 @@ class Graph
 		void findDistanceFromStart(vector<pair<POI*, Road>>&, POI);
 	public:
 		Graph();
+		void addPOI(const string);
 		void addRoad(const string, const string, const string, int);
 		void getShortestPath(const string);		
 };

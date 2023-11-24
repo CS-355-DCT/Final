@@ -34,25 +34,49 @@ void Graph::findDistanceFromStart(vector<pair<POI*, Road>>& roads, POI point)
 	}
 }
 
+//TB
+void Graph::addPOI(const string inPOI)
+{
+	int inIndex = findPOIIndex(inPOI);
+	if(inIndex == -1)
+	{
+		POI newPOI;
+		newPOI.name = inPOI;
+		points.push_back(newPOI);
+	}
+	else
+		cout << "POI is already in the graph" << endl;
+}
+
 
 //TB
 void Graph::addRoad(const string startPOI, const string roadName, const string linkedPOI, int length)
 {
 	int  linkedI = findPOIIndex(linkedPOI);
+	int startI = findPOIIndex(startPOI);
+	if(linkedI == -1)
+	{
+		addPOI(linkedPOI);
+		//it will be the last index, so size - 1 :)
+		linkedI = points.size() - 1;
+	}
+
+	if(startI == -1)
+	{
+		addPOI(startPOI);
+		//same as before :D
+		startI = points.size() - 1;
+	}
+
 	Road newRoad;
 	newRoad.length = length;
 	newRoad.name = roadName;
-	if(linkedI >= 0)
-	{
-		if(startPOI == "Station")
-			points[0].Roads.push_back(make_pair(&points[linkedI], newRoad));
-		else
-		{
-			int startI = findPOIIndex(startPOI);
-			if(startI >= 0)
-				points[startI].Roads.push_back(make_pair(&points[linkedI], newRoad));
-		}
-	}
+
+	if(startPOI == "Station")
+		points[0].Roads.push_back(make_pair(&points[linkedI], newRoad));
+	else
+		points[startI].Roads.push_back(make_pair(&points[linkedI], newRoad));
+	
 }
 
 
