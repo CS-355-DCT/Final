@@ -78,7 +78,26 @@ void Graph::addRoad(const string startPOI, const string roadName, const string l
 		points[startI].Roads.push_back(make_pair(&points[linkedI], newRoad));
 	
 }
+//TB
+void Graph::printShortestPath(const POI& FinalDestination)
+{
+	const POI curr = &FinalDestination;
+	cout << "Fastet Route to " << FinalDestination.name<< " is :";
+	while ( != nullptr)
+	{
+		cout << curr->name;
 
+		if(curr->laastNode != nullptr)
+		{
+			cout << "--->";
+		}
+		else
+		{
+			cout << endl;
+		}
+		curr = curr->lastNode; 
+	}
+}
 
 //TB
 void Graph::getShortestPath(const string destination)
@@ -110,15 +129,15 @@ void Graph::getShortestPath(const string destination)
 	
 		} while(!(unvisited.empty()));
 		
-		//print test data
-		for(int i = 0; i < visited.size(); i++)
-		{
-			cout << visited[i].name << ":";
-			cout << visited[i].lengthFromStart << ":";
-			cout << visited[i].lastNode->name << endl;
-		}
+	
+	
+	
+	
+	
+	
+	
 		
-		//almost done
+		printShortestPath(points[destination]);
 		
 		
 	}	
