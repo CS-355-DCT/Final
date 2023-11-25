@@ -78,7 +78,7 @@ void Graph::addRoad(const string startPOI, const string roadName, const string l
 		points[startI].Roads.push_back(make_pair(&points[linkedI], newRoad));
 	
 }
-//TB
+//CM
 void Graph::printShortestPath(const POI& FinalDestination)
 {
 	const POI* curr = &FinalDestination;
@@ -99,7 +99,7 @@ void Graph::printShortestPath(const POI& FinalDestination)
 	}
 }
 
-//CM
+//TB
 void Graph::getShortestPath(const string destination)
 {
 	int destinationI = findPOIIndex(destination);
