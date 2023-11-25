@@ -99,7 +99,7 @@ void Graph::printShortestPath(const POI& FinalDestination)
 	}
 }
 
-//TB
+//CM
 void Graph::getShortestPath(const string destination)
 {
 	int destinationI = findPOIIndex(destination);
@@ -129,16 +129,21 @@ void Graph::getShortestPath(const string destination)
 	
 		} while(!(unvisited.empty()));
 		
+                for (int i =0; i< visited.size(); i++)
+                 {
+                         cout << visited[i].name << ": ";
+                         cout << visited[i].lengthFromStart << ": ";
+                         if(visited[i].lastNode != nullptr)
+                                 cout << visited[i].lastNode->name <<endl;
+                         else
+                                 cout<< "nullptr" <<endl;
+                 }
+
+         //CM
+         printShortestPath(points[destinationI]);	
 	
 	
-	
-	
-	
-	
-	
-		
-//	printShortestPath(points[destination]);
-		
+
 		
 	}	
 	
