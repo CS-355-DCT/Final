@@ -79,24 +79,32 @@ void Graph::addRoad(const string startPOI, const string roadName, const string l
 	
 }
 //CM
-void Graph::printShortestPath(const POI& FinalDestination)
+void Graph::printShortestPath(const POI& finalDestination)
 {
-	const POI* curr = &FinalDestination;
-	cout << "Fastet Route to " << FinalDestination.name<< " is :";
-	while (curr != nullptr)
-	{
-		cout << curr->name;
+    const POI* curr = &finalDestination;
+    cout << "Fastest Route to " << finalDestination.name << " is: ";
 
-		if(curr->lastNode != nullptr)
-		{
-			cout << "--->";
-		}
-		else
-		{
-			cout << endl;
-		}
-		curr = curr->lastNode; 
-	}
+    
+    bool isFirstNode = true;
+
+    while (curr != nullptr)
+    {
+        if (!isFirstNode)
+        {
+            // Find the edge
+            const Road& road = findRoad(*curr->lastNode, *curr);
+            
+            // Print the edge name
+            cout << " (" << road.name << ", " << road.length << "--> ";
+        }
+
+        cout << curr->name;
+
+        isFirstNode = false;
+        curr = curr->lastNode;
+    }
+
+    cout << endl;
 }
 
 //TB
