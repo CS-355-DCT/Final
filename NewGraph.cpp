@@ -81,13 +81,13 @@ void Graph::addRoad(const string startPOI, const string roadName, const string l
 //TB
 void Graph::printShortestPath(const POI& FinalDestination)
 {
-	const POI curr = &FinalDestination;
+	const POI* curr = &FinalDestination;
 	cout << "Fastet Route to " << FinalDestination.name<< " is :";
-	while ( != nullptr)
+	while (curr != nullptr)
 	{
 		cout << curr->name;
 
-		if(curr->laastNode != nullptr)
+		if(curr->lastNode != nullptr)
 		{
 			cout << "--->";
 		}
@@ -143,5 +143,3 @@ void Graph::getShortestPath(const string destination)
 	}	
 	
 }
-
-
