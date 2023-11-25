@@ -10,7 +10,7 @@ Graph::Graph()
 
 int Graph::findPOIIndex(string poiName)
 {
-	for(int i = 0; i < points.size(); i++)
+ 	for(int i = 0; i < points.size(); i++)
 	{
 		if(points[i].name == poiName)
 			return i;
@@ -137,9 +137,17 @@ void Graph::getShortestPath(const string destination)
 	
 	
 		
-		printShortestPath(points[destination]);
+//	printShortestPath(points[destination]);
 		
 		
 	}	
 	
+}
+
+// DC
+void Graph::printNodes(){
+
+    for(const auto& i : points){
+        cout << i.name << endl;
+    }
 }
