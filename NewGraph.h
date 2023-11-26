@@ -16,14 +16,15 @@ class Graph
 		//the station, starting point for all cases, will always be named "Station"
 		POI Station;
 		int findPOIIndex(string);
-		void findDistanceFromStart(vector<pair<POI*, Road>>&, POI);
+		void findDistanceFromStart(POI*);
+		void printShortestPath(const POI&);
 	public:
 		Graph();
+		bool validateName(const string);
 		void addPOI(const string);
 		void addRoad(const string, const string, const string, int);
 		void getShortestPath(const string);
-        void printShortestPath(const POI&);
-        void printNodes();
+	       	void printNodes();
 };
 
 #endif

@@ -10,6 +10,10 @@ int main()
     // DC
 	Graph Metrocity;
 
+	//TB
+	string inName;
+	//end TB
+
     // A: Station
     // B: Church
     // C: CFA
@@ -61,5 +65,28 @@ int main()
     Metrocity.addRoad("Lowes","Seventh","Gas Station",2);
     Metrocity.addRoad("Lowes","Eighth","Verizon",3);
 
-    Metrocity.printNodes();
+    //TB
+
+    //validate inName
+    bool exitLoop = true;
+    do
+    {
+	    cout << "Here is a list of available locations:" << endl;
+	    Metrocity.printNodes();
+	    cout << "Please enter the location of your emergency, and we will tell you the fastest route!" << endl;
+	    cin >> inName;
+	    
+	    if(!(Metrocity.validateName(inName)))
+	    {
+		    cout << "Please enter a valid name! note: all names are currently case sensitive!" << endl;
+		    exitLoop = false;
+	    }
+	  
+    } while(!exitLoop);
+
+    Metrocity.getShortestPath(inName);
+
+
+    return 0;
+//end TB
 }
