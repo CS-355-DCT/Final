@@ -61,7 +61,7 @@ void Graph::addPOI(const string inPOI)
 
 
 //TB
-void Graph::addRoad(const string startPOI, const string roadName, const string linkedPOI, int length)
+void Graph::addRoad(const string startPOI, const string roadName, const string linkedPOI, double length)
 {
 	int  linkedI = findPOIIndex(linkedPOI);
 	int startI = findPOIIndex(startPOI);

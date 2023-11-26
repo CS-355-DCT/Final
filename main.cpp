@@ -73,7 +73,7 @@ int main()
     {
 	    cout << "Here is a list of available locations:" << endl;
 	    Metrocity.printNodes();
-	    cout << "Please enter the location of your emergency, and we will tell you the fastest route!" << endl;
+	    cout << "Please enter the location nearest of your emergency, and we will tell you the fastest route!" << endl;
 	    cin >> inName;
 	    
 	    if(!(Metrocity.validateName(inName)))
