@@ -24,7 +24,7 @@ class Graph
 		void addPOI(const string);
 		void addRoad(const string, const string, const string, double);
 		void getShortestPath(const string);
-	       	void printNodes();
+	    void printNodes() const;
 };
 
 #endif

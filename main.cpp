@@ -8,6 +8,17 @@ using namespace std;
 int main()
 {
     // DC
+    const string line = "-------------------------------------------------------------------------------------------------------";
+    const string shortline = "----------------";
+    cout << line << endl << endl;
+    cout << "  00000     0000   00000   00  00000      00000    00000   00000   00000  00   00  00000      00    " << endl;
+    cout << "  00  00   00  00  00  00  00  00  00     00  00   00     00      00      00   00  00         00    " << endl;
+    cout << "  0000000  000000  00000   00  00  00     0000000  0000   000000  00      00   00  0000    00000000 " << endl;
+    cout << "  00   00  00  00  00      00  00  00     00   00  00         00  00      00   00  00         00    " << endl;
+    cout << "  00   00  00  00  00      00  00000      00   00  00000  00000    00000   00000   00000      00    " << endl << endl;
+    cout << line << endl << endl;
+
+    // DC
 	Graph Metrocity;
 
 	//TB
@@ -64,24 +75,31 @@ int main()
     // H: Lowes
     Metrocity.addRoad("Lowes","Seventh","Gas Station",2);
     Metrocity.addRoad("Lowes","Eighth","Verizon",3);
+    // end DC
+
 
     //TB
 
     //validate inName
-    bool exitLoop = true;
+    bool exitLoop;
     do
     {
-	    cout << "Here is a list of available locations:" << endl;
+        exitLoop = true;
+
+	    cout << "Here is a list of available locations:" << endl << endl;
+        cout << shortline << endl << endl;
 	    Metrocity.printNodes();
+        cout << endl;
+        cout << shortline << endl << endl;
 	    cout << "Please enter the location nearest of your emergency, and we will tell you the fastest route!" << endl;
-	    cin >> inName;
-	    
+	    getline(cin, inName);
+
 	    if(!(Metrocity.validateName(inName)))
 	    {
 		    cout << "Please enter a valid name! note: all names are currently case sensitive!" << endl;
 		    exitLoop = false;
 	    }
-	  
+
     } while(!exitLoop);
 
     Metrocity.getShortestPath(inName);

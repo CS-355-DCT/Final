@@ -35,6 +35,7 @@ void Graph::findDistanceFromStart(POI* point)
 	}
 }
 
+//TB
 bool Graph::validateName(const string inName)
 {
 	for(auto i : points)
@@ -90,7 +91,7 @@ void Graph::addRoad(const string startPOI, const string roadName, const string l
 	
 }
 
-
+//TB
 string findRoadName(POI endPOI, POI startPOI)
 {
 	for(int i = 0; i < startPOI.Roads.size(); i++)
@@ -114,17 +115,20 @@ void Graph::printShortestPath(const POI& finalDestination)
    cout << "Fastest Route to " << finalDestination.name << " is: ";
 
     deque<string> names;
+    // TB & DC
+    names.push_front(findRoadName(finalDestination,*curr));
     names.push_front(finalDestination.name);
+    // end TB & DC
 
     while (curr != nullptr)
     {
-        //TB
+    //TB
 	if(curr->lastNode != nullptr)
-		names.push_front(findRoadName(*curr, *(curr->lastNode)));
+	   names.push_front(findRoadName(*curr, *(curr->lastNode)));
 
-        names.push_front(curr->name);
+       names.push_front(curr->name);
 	//end TB
-	
+
         curr = curr->lastNode;
     }
 
@@ -135,22 +139,19 @@ void Graph::printShortestPath(const POI& finalDestination)
 
     while(!(names.empty()))
     {
-	if(names.front() == names.back())
-	{
-		cout << "bringing you to " << names.front();
-		names.pop_front();
-	}
-	else
-	{
-		cout << "then turn by " << names.front();
+		cout << "then drive to " << names.front();
 		names.pop_front();
 		cout << " on " << names.front() << endl;
 		names.pop_front();
-	}
 
-    }	//end TB   
+    }	//end TB
+
+    // DC
+    cout << "Total Mileage: " << finalDestination.lengthFromStart << " miles." << endl;
+    cout << endl << "Thank you for using RAPID RESCUE! Have a nice day!" << endl;
 
     cout << endl;
+    // end DC
 }
 
 //TB
@@ -162,7 +163,7 @@ void Graph::getShortestPath(const string destination)
 	else
 	{
 		const double INF = 100000;
-		
+
 		points[0].lengthFromStart = 0;
 		points[0].lastNode = nullptr;
 		for(int i = 1; i < points.size(); i++)
@@ -203,32 +204,23 @@ void Graph::getShortestPath(const string destination)
 
 		do
 		{
-			
+
 			findDistanceFromStart(visited.back());
 			visited.push_back(unvisited.front());
 			unvisited.pop_front();
-	
+
 		} while(!(unvisited.empty()));
-		
-               /* for (int i =0; i< visited.size(); i++)
-                 {
-                         cout << visited[i]->name << ": ";
-                         cout << visited[i]->lengthFromStart << ": ";
-                         if(visited[i]->lastNode != nullptr)
-                                 cout << visited[i]->lastNode->name << endl;
-                         else
-                                 cout<< "nullptr" <<endl;
-                 }*/	
+
 
          //CM
-         printShortestPath(points[destinationI]);	
-	
-		
-	}		
+         printShortestPath(points[destinationI]);
+
+	}
 }
 
 // DC
-void Graph::printNodes(){
+void Graph::printNodes() const
+{
 
     for(const auto& i : points){
         cout << i.name << endl;
