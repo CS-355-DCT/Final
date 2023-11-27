@@ -8,6 +8,7 @@ using namespace std;
 int main()
 {
     // DC
+    // This is simply a static text display to add to the program's interface.
     const string line = "-------------------------------------------------------------------------------------------------------";
     const string shortline = "----------------";
     cout << line << endl << endl;
@@ -19,11 +20,18 @@ int main()
     cout << line << endl << endl;
 
     // DC
+    // Creating Metrocity as an object of the "Graph" class
 	Graph Metrocity;
 
-	//TB
+	// TB
+    // String for user input of destination.
 	string inName;
 	//end TB
+
+    // DC
+
+    // These locations are akin to the alphabetic labels given in the example graph.
+    // The letters here are purely symbolic.
 
     // A: Station
     // B: Church
@@ -38,49 +46,60 @@ int main()
 
     // DC
     // A: Station
+    // Initializing Station Node and connecting Its Neighbors
     Metrocity.addRoad("Station","Avalon","Town Hall",1);
     Metrocity.addRoad("Station","Long","Church",2);
     Metrocity.addRoad("Station","Prime","Gas Station",3);
 
     // DC
     // F: Town Hall
+    // Initializing Town Hall Node and connecting Its Neighbors
     Metrocity.addRoad("Town Hall","Avalon","Post Office",1);
     Metrocity.addRoad("Town Hall","State","Church",4);
     Metrocity.addRoad("Town Hall","Iron","CFA",6);
 
     // DC
     // G: Post Office
+    // Initializing Post Office Node and connecting Its Neighbor
     Metrocity.addRoad("Post Office","Avalon","Utilities",6);
     Metrocity.addRoad("Post Office","Wood","CFA",5);
 
     // DC
     // C: CFA
+    // Initializing CFA Node and connecting Its Neighbors
     Metrocity.addRoad("CFA","Silver","Utilities",1);
     Metrocity.addRoad("CFA","Trout","Church",4);
 
     // DC
     // B: Church
+    // Initializing Church Node and connecting Its Neighbors
     Metrocity.addRoad("Church","Lime","Lowes",7);
 
     // DC
     // D: Utilities
+    // Initializing Utilities Node and connecting Its Neighbors
     Metrocity.addRoad("Utilities","Avalon","Sonic",2);
 
     // DC
     // I: Sonic
+    // Initializing Sonic Node and connecting Its Neighbors
     Metrocity.addRoad("Sonic","Avalon","Verizon",5);
     Metrocity.addRoad("Sonic","Sixth","Lowes",2);
 
     // DC
     // H: Lowes
+    // Initializing Lowes Node and connecting Its Neighbors
     Metrocity.addRoad("Lowes","Seventh","Gas Station",2);
     Metrocity.addRoad("Lowes","Eighth","Verizon",3);
     // end DC
 
 
-    //TB
+    // TB and DC
+    // This Do While loop takes in user input for example "Sonic"
+    // and validates the user input before exiting the loop and calling
+    // the getShortestPath method to run Dijkstra's algorithm and display
+    // the route.
 
-    //validate inName
     bool exitLoop;
     do
     {
@@ -91,7 +110,7 @@ int main()
 	    Metrocity.printNodes();
         cout << endl;
         cout << shortline << endl << endl;
-	    cout << "Please enter the location nearest of your emergency, and we will tell you the fastest route!" << endl;
+	    cout << "Please enter the location nearest of the emergency, and we will tell you the fastest route!" << endl;
 	    getline(cin, inName);
 
 	    if(!(Metrocity.validateName(inName)))
