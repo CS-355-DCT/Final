@@ -92,7 +92,7 @@ void Graph::addRoad(const string startPOI, const string roadName, const string l
 }
 
 //TB
-string findRoadName(POI endPOI, POI startPOI)
+string Graph::findRoadName(POI endPOI, POI startPOI)
 {
 	for(int i = 0; i < startPOI.Roads.size(); i++)
 	{

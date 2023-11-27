@@ -16,6 +16,7 @@ class Graph
 		//the station, starting point for all cases, will always be named "Station"
 		POI Station;
 		int findPOIIndex(string);
+		string findRoadName(POI, POI);
 		void findDistanceFromStart(POI*);
 		void printShortestPath(const POI&);
 	public:
