@@ -7,6 +7,10 @@
 
 
 //TB
+//acts as nodes for the graph
+//has a string for its name
+//uses a vector to contain all of its 'edges' (called Roads)
+//has lengthFromStart double and a POI* called lastNode to aid in the getShortestPath function
 struct POI
 {
 	std::string name;
