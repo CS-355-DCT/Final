@@ -2,12 +2,18 @@
 
 
 //TB
+//Constructor that initializes the first node of the graph
+//Takes in no values and returns no values
 Graph::Graph()
 {
 	Station.name = "Station";
 	points.push_front(Station);
 }
 
+//TB
+//function that takes in a string variable 'poiName'
+//Searches for a POI with the same string value for its name as poiName
+//Returns said index if it is found, otherwise it returns -1
 int Graph::findPOIIndex(string poiName)
 {
  	for(int i = 0; i < points.size(); i++)
@@ -20,13 +26,16 @@ int Graph::findPOIIndex(string poiName)
 }
 
 //TB
+//takes in a pointer to a POI
+//gets the Roads vector that is assigned to each POI, and iterates through each Road
+//updates the length value if it is less than its original length
+//returns no values
 void Graph::findDistanceFromStart(POI* point)
 {
 	for(auto & i : point->Roads)
 	{
 		double testLength = point->lengthFromStart + i.second.length;
 		POI currentNode = *(i.first);
-	//	cout << currentNode.name << ":" << testLength << "vs" << currentNode.lengthFromStart << endl;
 		if(testLength < currentNode.lengthFromStart)
 		{
 			i.first->lengthFromStart = testLength;
@@ -36,6 +45,9 @@ void Graph::findDistanceFromStart(POI* point)
 }
 
 //TB
+//takes in a string value
+//iterates through the points deque and checks each POI in points for a matching name equal to 'inName'
+//returns true if a matching value is found, returns false if not found
 bool Graph::validateName(const string inName)
 {
 	for(auto i : points)
@@ -47,6 +59,10 @@ bool Graph::validateName(const string inName)
 }
 
 //TB
+//takes in a string for the name of the POI to create
+//uses the findPOIIndex function to make sure the POI doesn't already exist
+//if it doesn't it creates a new POI and adds to to the points deque
+//it returns no values
 void Graph::addPOI(const string inPOI)
 {
 	int inIndex = findPOIIndex(inPOI);
@@ -62,6 +78,9 @@ void Graph::addPOI(const string inPOI)
 
 
 //TB
+//takes in three strings, and a double for the new Road's length
+//searches for the POI of both startPOI, and linkedPOI if it doesn't find one, it makes one
+//it creates a new Road and adds it to the POI with the name 'startPOI' Roads vector 
 void Graph::addRoad(const string startPOI, const string roadName, const string linkedPOI, double length)
 {
 	int  linkedI = findPOIIndex(linkedPOI);
@@ -92,6 +111,9 @@ void Graph::addRoad(const string startPOI, const string roadName, const string l
 }
 
 //TB
+//takes in two POI elements
+//searches through startPOI's Roads vector, and checks to see if one of them is linked to endPOI
+//if it is, it returns the road's name, if not it returns "No Road Found"
 string Graph::findRoadName(POI endPOI, POI startPOI)
 {
 	for(int i = 0; i < startPOI.Roads.size(); i++)
@@ -107,6 +129,9 @@ string Graph::findRoadName(POI endPOI, POI startPOI)
 
 
 //CM
+//takes in a POI element
+//initializes a string deque to get all the names of the POI's and Roads that will be traversed
+//prints out the values of the string deque until its final element
 void Graph::printShortestPath(const POI& finalDestination)
 {
 
@@ -155,6 +180,12 @@ void Graph::printShortestPath(const POI& finalDestination)
 }
 
 //TB
+//takes in a string value
+//ensure the inserted string is a valid name for a POI
+//if it is, it initializes values, and makes to POI pointer deques
+//it adds values to unvisited by checking the nodes closes to the start, and going out until all nodes are found
+//iterates through the unvisited deque and calls findShortestDistance()
+//once the loop is finished it calls printShortestPath()
 void Graph::getShortestPath(const string destination)
 {
 	int destinationI = findPOIIndex(destination);
@@ -219,6 +250,8 @@ void Graph::getShortestPath(const string destination)
 }
 
 // DC
+// prints out each POI in the graph
+// takes in no elements and returns no elements
 void Graph::printNodes() const
 {
 
