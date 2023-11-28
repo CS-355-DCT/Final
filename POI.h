@@ -1,3 +1,8 @@
+// CS 355
+// Final Project
+// Thomas Bendall
+// 11/27/2023
+
 #ifndef POI_H
 #define POI_H
 

@@ -1,3 +1,8 @@
+// CS 355
+// Final Project
+// Thomas Bendall, Drew Clark, Christelle Mbemeba
+// 11/27/2023
+
 #include "NewGraph.h"
 
 

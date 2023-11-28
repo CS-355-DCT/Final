@@ -1,3 +1,8 @@
+// CS 355
+// Final Project
+// Thomas Bendall, Drew Clark, Christelle Mbemba
+// 11/27/2023
+
 #ifndef H_GRAPH
 #define H_GRAPH
 

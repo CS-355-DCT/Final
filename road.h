@@ -1,3 +1,8 @@
+// CS 355
+// Final Project
+// Thomas Bendall
+// 11/27/2023
+
 #ifndef ROAD_H
 #define ROAD_H
 #include <string>
